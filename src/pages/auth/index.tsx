@@ -10,7 +10,8 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const router = useRouter()
 
-    function handleLogin(e: any) {
+    // Ganti tipe parameter e dengan React.FormEvent<HTMLFormElement>
+    function handleLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
         const data = {
@@ -25,14 +26,14 @@ export default function Login() {
                 router.push('/product')
             }, 2000)
         } else {
-            alert("login gagal, silahkan cek username atau password kamu")
+            alert("Login gagal, silakan cek username atau password kamu")
         }
     }
 
     return (
         <Layout>
             {
-                isLoading === false ?
+                isLoading === false ? (
                     <div className='flex flex-col justify-center items-center w-full h-screen'>
                         <h2 className='text-2xl font-bold items-center text-amber-500 my-20'>Madura Shop</h2>
                         <form
@@ -57,7 +58,10 @@ export default function Login() {
                                 Login
                             </button>
                         </form>
-                    </div> : <Loading />
+                    </div>
+                ) : (
+                    <Loading />
+                )
             }
         </Layout>
     )

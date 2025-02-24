@@ -49,8 +49,8 @@ export default function Product() {
                     className='border p-2 rounded-md'
                 >
                     {
-                        categories.map((item) => (
-                            <option>{item}</option>
+                        categories.map((item, key) => (
+                            <option key={key}>{item}</option>
                         ))
                     }
                 </select>
@@ -60,8 +60,8 @@ export default function Product() {
                     className='border p-2 rounded-md'
                 >
                     {
-                        sortOptions.map((item) => (
-                            <option>{item}</option>
+                        sortOptions.map((item, key) => (
+                            <option key={key}>{item}</option>
                         ))
                     }
                 </select>
@@ -71,6 +71,7 @@ export default function Product() {
                     filteredProducts.map((item: DataProduct) => {
                         return (
                             <Card
+                                key={item.id} 
                                 id={item.id}
                                 title={item.title}
                                 description={item.description}
